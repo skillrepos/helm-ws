@@ -16,12 +16,12 @@ spec:
     spec:
       containers:
       - name: {{ .Chart.Name }}
-        {{- if eq .Values.stage  "PROD" }}
+        {{- if eq  .Values.stage "PROD" }}
         image: "{{- .Values.image.prod.repository }}:{{ .Values.image.prod.tag -}}"
-        {{ else if eq .Values.stage  "TEST" }}
+        {{ else if eq  .Values.stage  "TEST" }}
         image: "{{- .Values.image.test.repository }}:{{ .Values.image.test.tag -}}"
         {{ else }}
-        image: "{{ required "A valid .Values.stage entry required!" .Values.stage }}"
+        image: "{{- fail "A valid .Values.stage entry required!" }}"
         {{ end -}}
         imagePullPolicy: Always
         ports:
