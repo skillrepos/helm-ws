@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: {{ .Chart.Name }}
-        image: bclaster/roar-db-image:v1
+        image: quay.io/bclaster/roar-db-image:v1
         imagePullPolicy: Always
         ports:
         - name: {{ .Values.deployment.ports.name }}
