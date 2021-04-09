@@ -1,0 +1,10 @@
+apiVersion: v2
+description: Helm chart for roar-web instance
+name: roar-web
+version: 0.1.0
+dependencies:
+- name: roar-db
+  version: 0.1.0
+  repository: http://localhost:31000
+
+
