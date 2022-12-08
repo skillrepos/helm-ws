@@ -2,10 +2,34 @@ Lab 2 - step 8
 
 helm upgrade local-chartmuseum cm/chartmuseum --set env.open.DISABLE_API=false --set service.type=NodePort --set service.nodePort=31000
 
-Lab 4 - step 7
+
+Lab 4 - step 9
 
 curl --data-binary "@roar-db-0.1.0.tgz"  http://localhost:31000/api/charts
 
-Lab 5 - step 9
+
+Lab 5 - step 11
 
 helm template . --debug --set roar-db.image.repository=quay.io/bclaster/roar-db-test   --set roar-db.image.tag=v4  |  grep image
+
+
+Lab 5 - step 14
+
+helm upgrade -n roar2 roar2 . -f test-db.yaml --recreate-pods
+
+
+Lab 6 - step 5
+
+helm install --set roar-db.stage=TEST --dry-run foo . | grep image -n3
+
+
+Lab 6 - steps 6 & 8
+
+helm install --set roar-db.stage=test --dry-run foo . | grep image -n3
+
+
+Lab 6 - step 12
+
+helm install --set roar-db.stage=TEST --dry-run foo . | grep image -n3
+
+helm install --set roar-db.stage=TEST roar-test -n roar-test .
